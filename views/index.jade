@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js")
+    script
+      |$(document).ready(function(){
+      |$("#mysqlStatus").click(function(){
+      |   $.ajax({url:"/service",
+      |         success:function(data,status){$("#mysqlStatus").html("连接成功,共有"+ data + "位用户")},
+      |         error:function(err){$("#mysqlStatus").html("连接失败")}
+      |})
+      |})
+      |})
+  body
+    h1= title
+    p Welcome to #{title}
+    br
+    br
+    button#mysqlStatus(type="button") test mysql
