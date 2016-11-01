@@ -16,12 +16,12 @@ var connection = mysql.createConnection({
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    connection.query("select count(*) from wp_users",function(error,rs,status){
+    connection.query("select * from wp_users",function(error,rs,status){
         if(error){
             res.write("-1");
             res.end();
         }else{
-            res.write(""+rs[0]["count(*)"]);
+            res.write(JSON.stringify(rs));
             res.end();
         }
     });
